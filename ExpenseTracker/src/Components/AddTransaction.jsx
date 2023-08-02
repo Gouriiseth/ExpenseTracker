@@ -1,8 +1,11 @@
 import { useState } from "react"
-const AddTransaction = () => {
+import TransactionHistory from "./TransactionHistory"
+
+
+const AddTransaction = ( ) => {
   const [amount, setAmount] = useState("")
   const [amtType, setAmtType] = useState("")
-  const [transaction, setTransaction] = useState([])
+  const [transactions, setTransactions] = useState([])
 
   
   // console.log(amount);
@@ -11,8 +14,8 @@ const AddTransaction = () => {
   const handleAddTransaction=()=>{
     const newTransaction={amount,amtType};
     if(amount!=='' && amtType!=''){
-    setTransaction([...transaction,newTransaction])
-    console.log(transaction);
+    setTransactions([...transactions,newTransaction])
+    console.log(transactions);
     }
     setAmount('');
     setAmtType('');  
@@ -34,6 +37,10 @@ const AddTransaction = () => {
       </div>
       <button className="text-1xl font-bold bg-red-400 rounded" onClick={handleAddTransaction}>Add Transaction</button>
       </div>
+
+      <TransactionHistory 
+        transactions={transactions}
+      />
     </>
   )
 }
