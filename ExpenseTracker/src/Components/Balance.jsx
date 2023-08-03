@@ -1,13 +1,28 @@
-const Balance = ({balTransactions}) => {
+const Balance = ({balTransactions,selectedType}) => {
 
 
   const calBal=()=>{
-    const totExpense = balTransactions.filter((transaction) => transaction.amtType === 'expense')
-    .reduce((total,transaction)=>total+transaction.amount,0);
-    const totIncome = balTransactions.filter((transaction) => transaction.amtType === 'income')
-    .reduce((total, transaction) => total + transaction.amount, 0);
 
-  return totIncome-totExpense;
+      let totincome;
+    if(selectedType==='expense')
+    {
+       totincome = balTransactions.filter((transaction) => transaction.amtType === 'income')
+      .reduce((total, transaction) => total + parseInt(transaction.amount), 0);
+    }
+
+    let totexpense;
+    if(selectedType==='income')
+    {
+     totexpense = balTransactions.filter((transaction) => transaction.amtType === 'expense')
+      .reduce((total,transaction)=>total+parseInt(transaction.amount),0);
+    }
+  //   const totExpense = balTransactions.filter((transaction) => transaction.amtType === 'expense')
+  //   .reduce((total,transaction)=>total+transaction.amount,0);
+  //   const totIncome = balTransactions.filter((transaction) => transaction.amtType === 'income')
+  //   .reduce((total, transaction) => total + transaction.amount, 0);
+
+  // return totIncome-totExpense;
+  return totincome-totexpense;
      
   }
 

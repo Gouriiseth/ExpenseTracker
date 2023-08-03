@@ -39,6 +39,7 @@ const AddTransaction = ( ) => {
     <>
     <Balance 
       balTransactions={transactions}
+      selectedType={selectedType}
     />
 
     <ExpenseIncome 
